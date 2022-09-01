@@ -1,12 +1,27 @@
-import express from "express";
-import morgan from "morgan";
+import express from 'express'
+import morgan from 'morgan'
+import { sequelize } from './db/database.js'
+import operationsRoutes from './routes/operations.routes.js'
 
-const PORT = 3001;
+const PORT = 3001
 
-const app = express();
-app.use(morgan("dev"));
-app.use(express.json());
+const app = express()
 
-app.listen(PORT, () => {
-  console.log("Listening on port", PORT);
-});
+//  MIDDLEWARES
+app.use(morgan('dev'))
+app.use(express.json())
+
+//  ROUTES
+app.use('/api/operations', operationsRoutes)
+
+const main = async () => {
+  try {
+    await sequelize.sync({ force: true })
+    app.listen(PORT)
+    console.log('Listening on port', PORT)
+  } catch (error) {
+    console.error('Unable to connect to the database:', error)
+  }
+}
+
+main()
