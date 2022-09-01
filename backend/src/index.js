@@ -1,12 +1,18 @@
 import express from 'express'
 import morgan from 'morgan'
 import { sequelize } from './db/database.js'
+import operationsRoutes from './routes/operations.routes.js'
 
 const PORT = 3001
 
 const app = express()
+
+//  MIDDLEWARES
 app.use(morgan('dev'))
 app.use(express.json())
+
+//  ROUTES
+app.use('/api/operations', operationsRoutes)
 
 const main = async () => {
   try {
@@ -17,4 +23,5 @@ const main = async () => {
     console.error('Unable to connect to the database:', error)
   }
 }
+
 main()
