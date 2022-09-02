@@ -16,7 +16,7 @@ app.use('/api/operations', operationsRoutes)
 
 const main = async () => {
   try {
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ force: false })
     app.listen(PORT)
     console.log('Listening on port', PORT)
   } catch (error) {
