@@ -1,6 +1,10 @@
+import Home from './pages/Home'
+
 const App = () => {
   return (
-    <h1 class='text-3xl font-bold'>APP</h1>
+    <div className='bg-slate-900 min-h-screen'>
+      <Home />
+    </div>
   )
 }
 
