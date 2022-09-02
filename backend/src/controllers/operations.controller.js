@@ -30,11 +30,56 @@ export const createOperation = async (req, res) => {
   }
 }
 
-export const getOperation = () => {
+export const getOperation = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const operation = await Operation.findOne({
+      where: {
+        id
+      }
+    })
+    res.json(operation)
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
 }
 
-export const updateOperation = () => {
+export const updateOperation = async (req, res) => {
+  const { id } = req.params
+  const { concept, amount } = req.body
+
+  try {
+    const operation = await Operation.findByPk(id)
+
+    operation.concept = concept
+    operation.amount = amount
+
+    await operation.save()
+
+    res.json(operation)
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
 }
 
-export const deleteOperation = () => {
+export const deleteOperation = async (req, res) => {
+  const { id } = req.params
+  try {
+    await Operation.destroy({
+      where: {
+        id
+      }
+    })
+
+    return res.sendStatus(204)
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
 }
