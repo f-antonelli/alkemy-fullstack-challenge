@@ -1,7 +1,7 @@
 import { useForm } from '../../hooks/useForm'
 
 const Inputs = () => {
-  const { input, handleChange, handleSubmit } = useForm({
+  const { input, handleChange, handleSubmitPost } = useForm({
     concept: '',
     amount: '',
     type: 'entry'
@@ -9,7 +9,7 @@ const Inputs = () => {
   const { concept, amount } = input
 
   return (
-    <form className='flex flex-col' onSubmit={handleSubmit}>
+    <form className='flex flex-col' onSubmit={handleSubmitPost}>
       <label
         className='block text-white text-sm font-bold mb-2'
         htmlFor='concept'

@@ -6,7 +6,7 @@ export const useOperations = () => {
 
   useEffect(() => {
     getOperations().then(data => setOperations(data))
-  }, [operations])
+  }, [setOperations])
 
   return {
     operations

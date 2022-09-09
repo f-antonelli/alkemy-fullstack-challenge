@@ -6,15 +6,15 @@ const fromApiResponseToProducts = (apiResponse) => {
   return data
 }
 
-export const getOperations = () => {
-  const apiURL = 'http://localhost:3001/api/operations'
+export const deleteOperation = (id) => {
+  const apiURL = `http://localhost:3001/api/operations/${id}`
 
   return axios
-    .get(apiURL)
+    .delete(apiURL)
     .catch(function (error) {
       console.log(error)
     })
     .then(fromApiResponseToProducts)
 }
 
-export default getOperations
+export default deleteOperation
