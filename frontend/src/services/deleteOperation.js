@@ -1,12 +1,6 @@
 import axios from 'axios'
 
-const fromApiResponseToProducts = (apiResponse) => {
-  const { data = [] } = apiResponse
-
-  return data
-}
-
-export const deleteOperation = (id) => {
+export const deleteOperation = async (id) => {
   const apiURL = `http://localhost:3001/api/operations/${id}`
 
   return axios
@@ -14,7 +8,6 @@ export const deleteOperation = (id) => {
     .catch(function (error) {
       console.log(error)
     })
-    .then(fromApiResponseToProducts)
 }
 
 export default deleteOperation

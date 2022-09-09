@@ -26,6 +26,8 @@ export const useForm = (initialState = '') => {
     e.preventDefault()
 
     updateOperation(input, id)
+
+    reset()
   }
 
   const reset = () => {
