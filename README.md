@@ -1,4 +1,8 @@
 
+# Alkemy FullStack Challenge
+
+Personal budget management application using stack PERN. 
+
 ## Run Locally
 
 Clone the project
