@@ -1,9 +1,7 @@
-import { useOperations } from '../../hooks/useOperations'
+
 import Operation from './Operation'
 
-const ListOperations = () => {
-  const { operations } = useOperations()
-
+const ListOperations = ({ operations }) => {
   return (
     <div className='overflow-x-auto relative shadow-md sm:rounded-lg'>
       <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>

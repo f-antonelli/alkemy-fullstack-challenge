@@ -6,10 +6,10 @@ const fromApiResponseToProducts = (apiResponse) => {
   return data
 }
 
-const getOperations = () => {
+export const getOperations = async () => {
   const apiURL = 'http://localhost:3001/api/operations'
 
-  return axios
+  return await axios
     .get(apiURL)
     .catch(function (error) {
       console.log(error)

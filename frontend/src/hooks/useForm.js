@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import postOperation from '../services/postOperation'
+import updateOperation from '../services/updateOperation'
 
 export const useForm = (initialState = '') => {
   const [input, setInput] = useState(initialState)
@@ -13,10 +14,18 @@ export const useForm = (initialState = '') => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmitPost = (e) => {
     e.preventDefault()
 
     postOperation(input)
+
+    reset()
+  }
+
+  const handleSubmitPut = (e, id) => {
+    e.preventDefault()
+
+    updateOperation(input, id)
 
     reset()
   }
@@ -25,5 +34,5 @@ export const useForm = (initialState = '') => {
     setInput(initialState)
   }
 
-  return { input, handleChange, reset, handleSubmit }
+  return { input, handleChange, reset, handleSubmitPost, handleSubmitPut }
 }
